@@ -1,0 +1,17 @@
+{
+  "name": "sheet-it",
+  "version": "0.0.1",
+  "description": "Tool for downloading HL7 v2 to FHIR mappings",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Michael S. Hansen",
+  "license": "ISC",
+  "dependencies": {
+    "fs-extra": "^8.1.0",
+    "http": "0.0.0",
+    "path": "^0.12.7"
+  }
+}
