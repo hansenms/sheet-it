@@ -6,7 +6,7 @@ var sheets = JSON.parse(fse.readFileSync('sheets.json'));
 
 function sheetNameToFileName(sheetName)
 {
-    return sheetName.replace('/', '_');
+    return sheetName.split('/').join('_');
 }
 
 for (var p in sheets)

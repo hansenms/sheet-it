@@ -1,4 +1,106 @@
 {
+    "vocabularyMappings": [
+        {
+            "name": "Address Type (HL70190)",
+            "url": "https://docs.google.com/spreadsheets/d/1NwT6PQDhxnzaKcGOdZkioyHlt6WgaZBe_0KM_UJFNxE/gviz/tq?tqx=out:csv"
+        },
+        {
+            "name": "Admission Type (HL70007)",
+            "url": "https://docs.google.com/spreadsheets/d/1KJsdOBI-L2BD2DpItURTDZ7o-rGNEYIZZMBNEoiqhrI/gviz/tq?tqx=out:csv"
+        },
+        {
+            "name": "Encounter Class (HL70004)",
+            "url": "https://docs.google.com/spreadsheets/d/1T8Q6rSolB8lh56sXr3SVZ6AAPQGqD8D0zCoxz2dzdkM/gviz/tq?tqx=out:csv"
+        },
+        {
+            "name": "Role to Encounter Participant Type (HL70443)",
+            "url": "https://docs.google.com/spreadsheets/d/1Mw2am81E0fuDQ-kNrCEc-LwgZ6PlxHNauOBzZ8y5qUM/gviz/tq?tqx=out:csv"
+        },
+        {
+            "name": "Encounter Priority (HL70217)",
+            "url": "https://docs.google.com/spreadsheets/d/12v60aOPnLth4NipsjZyT9ibz5E7JSLgSsPMop2U1JgA/gviz/tq?tqx=out:csv"
+        },
+        {
+            "name": "Gender (HL70001)",
+            "url": "https://docs.google.com/spreadsheets/d/1VxG2IpKlMJE_aC4hDB-PXKM6q2vC_E950WO2Nbctr5U/gviz/tq?tqx=out:csv"
+        },
+        {
+            "name": "ID Type (HL70203)",
+            "url": "https://docs.google.com/spreadsheets/d/1ynFVTj3fQrQAvpGK7XAEODEzRaMdIexWD8MpT70VfE4/gviz/tq?tqx=out:csv"
+        },
+        {
+            "name": "Interpretation Code (HL70078)",
+            "url": "https://docs.google.com/spreadsheets/d/1mxMfcCgpRM2gH6QBOxndzjZcy22MzlskspqEmNADLp8/gviz/tq?tqx=out:csv"
+        },
+        {
+            "name": "Language (HL70296)",
+            "url": "https://docs.google.com/spreadsheets/d/1zPHUFEcOLuIhdG1yyDGDpYd-LAuUKn9hdJNlqYPTkGc/gviz/tq?tqx=out:csv"
+        },
+        {
+            "name": "Marital Status (HL70002)",
+            "url": "https://docs.google.com/spreadsheets/d/1HfYIHuf_CVC28fRhy3wgGSRZ5XtWKSERNNrcR45wSkA/gviz/tq?tqx=out:csv"
+        },
+        {
+            "name": "Mode of Arrival (HL70430)",
+            "url": "https://docs.google.com/spreadsheets/d/1cq-jINNYePVc6dACBzBbFzTv7ry8e6w8ZXgHmmW7WeE/gviz/tq?tqx=out:csv"
+        },
+        {
+            "name": "Name Assembly Order (HL0444)",
+            "url": "https://docs.google.com/spreadsheets/d/1d1PTZpzWZPTQ6Ke3fJeirYxfuQu9t1BetnUHq26UDgA/gviz/tq?tqx=out:csv"
+        },
+        {
+            "name": "Name Type (HL70400)",
+            "url": "https://docs.google.com/spreadsheets/d/1pK0Uutb8ppFiPxR_Mnwh5-N5WINCwTyWtgbwLBgZfGg/gviz/tq?tqx=out:csv"
+        },
+        {
+            "name": "Observation Status (HL70085)",
+            "url": "https://docs.google.com/spreadsheets/d/1RsA6SEYsjfrR6TbwY1JHBetrPyRED2RDzTa1jvHRvX0/gviz/tq?tqx=out:csv"
+        },
+        {
+            "name": "Order Status (HL70038)",
+            "url": "https://docs.google.com/spreadsheets/d/1yfFl5Zg_qfB6TZeM1e6tB33Mpprw0czJ3PyBCe4g07o/gviz/tq?tqx=out:csv"
+        },
+        {
+            "name": "Order Type (HL70482)",
+            "url": "https://docs.google.com/spreadsheets/d/1uTlF1ZBSs6GIksOREp3pcBLGNphcpxOrn5NBBEiRTd4/gviz/tq?tqx=out:csv"
+        },
+        {
+            "name": "Priority (HL70485)",
+            "url": "https://docs.google.com/spreadsheets/d/1fGyQTjdnP2McZispMSnCjbNoCkcPvw9F4tLIw-5AXJU/gviz/tq?tqx=out:csv"
+        },
+        {
+            "name": "Readmission Indicator (HL70092)",
+            "url": "https://docs.google.com/spreadsheets/d/1etqlWirZVdqipXGQ_9Uq1Wl6bN4DMp-SdL6Y8MnE4WE/gviz/tq?tqx=out:csv"
+        },
+        {
+            "name": "Registry Status to boolean (HL70441)",
+            "url": "https://docs.google.com/spreadsheets/d/1a0YDihqtqELS5PPwR8b9wCOPg_Sq2uoLPpds6pHI9dk/gviz/tq?tqx=out:csv"
+        },
+        {
+            "name": "Relationship (HL70063)",
+            "url": "https://docs.google.com/spreadsheets/d/1BDbtJ9kKKpDXIG8GAaRyqpb_iUKBaaU4b0bcxHo0KoI/gviz/tq?tqx=out:csv"
+        },
+        {
+            "name": "Religion (HL70006)",
+            "url": "https://docs.google.com/spreadsheets/d/1y4Y1YDT48qL5Rqdob7hoyghJx70ks0qp68-hcOrdgcs/gviz/tq?tqx=out:csv"
+        },
+        {
+            "name": "Segment Action Code (HL70206)",
+            "url": "https://docs.google.com/spreadsheets/d/1jVCdH4v9dJwOnjM0gm20x8QgbN8HZwWJZwP2L14UWHI/gviz/tq?tqx=out:csv"
+        },
+        {
+            "name": "Telecom Use Code (HL70201)",
+            "url": "https://docs.google.com/spreadsheets/d/1EE3a5UIGXLi8wMDr49fWTEVx8QS2GFqYgitE3vLOQTQ/gviz/tq?tqx=out:csv"
+        },
+        {
+            "name": "Value Type to .value[x] (HL70125)",
+            "url": "https://docs.google.com/spreadsheets/d/1eaVJ4Cjdc5YB97SuEOquV3Fz6UO3DgwqS6-OVjjuPSY/gviz/tq?tqx=out:csv"
+        },
+        {
+            "name": "Yes/No to boolean (HL70136/HL70532)",
+            "url": "https://docs.google.com/spreadsheets/d/1MyCLfcQhfwFMXIqTKkSsWrhkPj4FueY1qg0EuMW8tmU/gviz/tq?tqx=out:csv"
+        }
+    ],
     "dataTypeMappings": [
         {
             "name": "CNE(CodeableConcept)",
