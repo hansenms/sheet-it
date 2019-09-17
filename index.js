@@ -1,30 +1,42 @@
+var csv = require('csv-parser');
 var fse = require('fs-extra');
 var path = require('path');
 var https = require('https');
 
 var sheets = JSON.parse(fse.readFileSync('sheets.json'));
 
-function sheetNameToFileName(sheetName)
-{
-    return sheetName.split('/').join('_');
+function editLinkToCsvLink(url) {
+    return url.replace('edit#gid=0', 'gviz/tq?tqx=out:csv');
 }
 
-for (var p in sheets)
-{
-    var folder = path.join("out", p);
+function rowFileName(rowData, headers) {
+    const exclusions = ['Link', 'Comment', 'Status', 'Owner'];
+    var fileNameComponents = [];
+    for (var i = 0; i < headers.length; i++) {
+        if (!exclusions.includes(headers[i])) {
+            if (rowData[headers[i]] && rowData[headers[i]].length > 0) {
+                fileNameComponents.push(rowData[headers[i]]);
+            }
+        }
+    }
+    return fileNameComponents.join('-').split('/').join('_').split(' ').join('');
+}
+
+sheets["sheets"].forEach(s => {
+    var folder = path.join('out', s.name.replace(' ', ''));
     fse.ensureDirSync(folder);
-    sheets[p].forEach(sheetReference => {
-        var file = fse.createWriteStream(path.join(folder, sheetNameToFileName(sheetReference.name) + ".csv"));
-        https.get(sheetReference.url, function(response) {
-            response.pipe(file);
-          });
+    https.get(s.url, function (response) {
+        var headers;
+        response
+            .pipe(csv())
+            .on('headers', (h) => {
+                headers = h;
+            })
+            .on('data', (data) => {
+                var file = fse.createWriteStream(path.join(folder, rowFileName(data, headers) + ".csv"));
+                https.get(editLinkToCsvLink(data.Link), function(sheetResponse) {
+                    sheetResponse.pipe(file);
+                });
+            });
     });
-}
-
-/*
-
-var file = fse.createWriteStream(path.join("out", "ADT01.csv"));
-https.get("https://docs.google.com/spreadsheets/d/1kPOewgrlY4Mpi8W3HyLzb5J-tuZnUBAzgsXuhX5lcGo/gviz/tq?tqx=out:csv", function(response) {
-  response.pipe(file);
 });
-*/
