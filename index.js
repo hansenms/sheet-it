@@ -6,7 +6,9 @@ var https = require('https');
 var sheets = JSON.parse(fse.readFileSync('sheets.json'));
 
 function editLinkToCsvLink(url) {
-    return url.replace('edit#gid=0', 'gviz/tq?tqx=out:csv');
+    var newUrl = url.replace('edit#gid=0', 'gviz/tq?tqx=out:csv');
+    newUrl = newUrl.replace('edit?usp=sharing','gviz/tq?tqx=out:csv');
+    return newUrl;
 }
 
 function rowFileName(rowData, headers) {
@@ -33,9 +35,13 @@ sheets["sheets"].forEach(s => {
                 headers = h;
             })
             .on('data', (data) => {
-                var file = fse.createWriteStream(path.join(folder, rowFileName(data, headers) + ".csv"));
                 https.get(editLinkToCsvLink(data.Link), function(sheetResponse) {
-                    sheetResponse.pipe(file);
+                    if (sheetResponse.statusCode == 200) {
+                        var file = fse.createWriteStream(path.join(folder, rowFileName(data, headers) + ".csv"));
+                        sheetResponse.pipe(file);
+                    } else {
+                        console.log('Error accessing file for ' + rowFileName(data, headers) + ', ' + editLinkToCsvLink(data.Link));
+                    }
                 });
             });
     });
