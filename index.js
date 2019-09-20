@@ -6,8 +6,8 @@ var https = require('https');
 var sheets = JSON.parse(fse.readFileSync('sheets.json'));
 
 function editLinkToCsvLink(url) {
-    var newUrl = url.replace('edit#gid=0', 'gviz/tq?tqx=out:csv');
-    newUrl = newUrl.replace('edit?usp=sharing','gviz/tq?tqx=out:csv');
+    var newUrl = url.replace('edit#gid=0', 'export?format=csv');
+    newUrl = newUrl.replace('edit?usp=sharing','export?format=csv');
     return newUrl;
 }
 
