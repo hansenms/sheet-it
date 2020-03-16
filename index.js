@@ -21,7 +21,7 @@ function rowFileName(rowData, headers) {
             }
         }
     }
-    return fileNameComponents.join('-').split('/').join('_').split(' ').join('');
+    return fileNameComponents.join('-').split(/[/:]/).join('_').split(' ').join('');
 }
 
 sheets["sheets"].forEach(s => {
