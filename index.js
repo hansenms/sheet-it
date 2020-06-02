@@ -35,14 +35,19 @@ sheets["sheets"].forEach(s => {
                 headers = h;
             })
             .on('data', (data) => {
-                https.get(editLinkToCsvLink(data.Link), function(sheetResponse) {
-                    if (sheetResponse.statusCode == 200) {
-                        var file = fse.createWriteStream(path.join(folder, rowFileName(data, headers) + ".csv"));
-                        sheetResponse.pipe(file);
-                    } else {
-                        console.log('Error accessing file for ' + rowFileName(data, headers) + ', ' + editLinkToCsvLink(data.Link));
-                    }
-                });
+                try {
+                    https.get(editLinkToCsvLink(data.Link), function(sheetResponse) {
+                        if (sheetResponse.statusCode == 200) {
+                            var file = fse.createWriteStream(path.join(folder, rowFileName(data, headers) + ".csv"));
+                            sheetResponse.pipe(file);
+                        } else {
+                            console.log('Error accessing file for ' + rowFileName(data, headers) + ', ' + editLinkToCsvLink(data.Link));
+                        }
+                    });
+                }
+                catch(err) {
+                    console.log(`Error : [${err}] for ${rowFileName(data, headers)},  ${editLinkToCsvLink(data.Link)}`);
+                }
             });
     });
 });
