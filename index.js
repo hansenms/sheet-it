@@ -29,6 +29,7 @@ sheets["sheets"].forEach(s => {
     fse.ensureDirSync(folder);
     https.get(s.url, function (response) {
         var headers;
+
         response
             .pipe(csv())
             .on('headers', (h) => {
@@ -40,6 +41,22 @@ sheets["sheets"].forEach(s => {
                         if (sheetResponse.statusCode == 200) {
                             var file = fse.createWriteStream(path.join(folder, rowFileName(data, headers) + ".csv"));
                             sheetResponse.pipe(file);
+                        } else if (sheetResponse.statusCode == 307) {
+                            var redirectedContent = '';
+                            sheetResponse.on('readable', () => redirectedContent += sheetResponse.read());
+                            sheetResponse.on('end', () => {
+                                let redirectedResults = redirectedContent.match(/The document has moved <A HREF="(.*)">here<\/A>/);
+                                let redirectedLink = redirectedResults[1];
+
+                                https.get(redirectedLink, function(redirectedResponse) {
+                                    if (redirectedResponse.statusCode == 200) {
+                                        var file = fse.createWriteStream(path.join(folder, rowFileName(data, headers) + ".csv"));
+                                        redirectedResponse.pipe(file);
+                                    } else {
+                                        console.log('Error accessing redirected file for ' + rowFileName(data, headers) + ', ' + editLinkToCsvLink(data.Link));
+                                    }
+                                });
+                            });
                         } else {
                             console.log('Error accessing file for ' + rowFileName(data, headers) + ', ' + editLinkToCsvLink(data.Link));
                         }
