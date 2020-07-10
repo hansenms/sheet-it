@@ -29,7 +29,6 @@ sheets["sheets"].forEach(s => {
     fse.ensureDirSync(folder);
     https.get(s.url, function (response) {
         var headers;
-
         response
             .pipe(csv())
             .on('headers', (h) => {
