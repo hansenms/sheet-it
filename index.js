@@ -1,7 +1,10 @@
 var csv = require('csv-parser');
 var fse = require('fs-extra');
 var path = require('path');
-var https = require('https');
+var followRedirects = require('follow-redirects');
+
+followRedirects.maxRedirects = 10;
+var https = followRedirects.https;
 
 var sheets = JSON.parse(fse.readFileSync('sheets.json'));
 
